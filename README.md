@@ -1,6 +1,8 @@
 #   TOP MASTERMIND GAME
 
-Here goes the description of the page explaining what it is and what it can do.
+This is a game whereby there are 2 players one being the mastermind the other the code breaker. On one end of a specially designed board the mastermind places 4 pegs of different colors on a hidden pit for the code breaker to cipher. After the masterminds code has been entered from the other opposite end of the board the code breaker begins the cipher process by attempting predictions in 4 pairs until the mastermind proves prediction to be a match or turns of predictions come to an end.
+
+For a visualized explanation check out this link from [wikiHow](https://www.youtube.com/watch?v=wsYPsrzCKiA&ab_channel=wikiHow) channel.
 
 >Love this project? Buy me a coffee...
 ---
@@ -55,4 +57,4 @@ To fix a bug or enhance an existing module, follow these steps:
 
 ## Bug / Feature Request
 
-- If you find a bug (the website couldn't handle the query and / or gave undesired results), kindly open an issue here > (https://github.com/keithowino/top-mastermind-game/issues/new).
+- If you find a bug (the website couldn't handle the query and / or gave undesired results), kindly open an issue [here](https://github.com/keithowino/top-mastermind-game/issues/new).
