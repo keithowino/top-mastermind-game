@@ -4,28 +4,27 @@ class Canvas
     @pegs = ["white", "red", "black", "blue", "green", "yellow", "purple", "maroon"]
     build_canvas
     bypas_code
+    replay
   end
 
   def build_canvas
     puts "\n====================="
     puts "    MASTERMIND V1   "
     puts "=====================\n\n"
-    puts "For a detailed walkthrough on how this game is played be advised to check out this video https://www.youtube.com/watch?v=wsYPsrzCKiA&ab_channel=wikiHow from wikiHow.\n\n"
-    puts "For this first version the mastermind will be the computer.\n\n"
-    puts "If you have not fully grassped the logic then just follow the guidlines issued as we go...\n\n"
-    puts "The engine will chose on random 4 different colored pegs in the list bellow:\n\n"
+    puts "For a detailed walkthrough on game play check out this link https://www.youtube.com/watch?v=wsYPsrzCKiA&ab_channel=wikiHow from wikiHow.\n\n"
+    puts "For this first version the mastermind will be the computer. Be advised that as it's still a work in progress dublicate predictions per pair is not allowed, attempting this might lead to missleading prediction in later trials.\n\n"
+    puts "The engine will chose on random 4 different colored pegs from this list bellow:\n\n"
     puts "#{@pegs.to_s}\n\n"
-    puts "Your mission should chose is to identify this 4 identical pegs in the same order they were picked up by the engine. You will have 10 trials to figure this out. The O symbol(s) represent the number of pegs you picked that are of the same color and position as that of the mastermind and the X symbol(s) represent the number of pegs that are present in the masterminds code but positioned wrongly in your code predictions.\n\n"
+    puts "Your mission should chose is to cipher the code and identify this 4 identical pegs in the same order they were picked up by the engine. Prediction limit is set to 10 trials. After each prediction the O symbol(s) represent the number of pegs you correctly positioned, similarly the X symbol(s) represent the number of pegs that are present in the masterminds code but positioned wrongly in your current prediction. If none of the two symbols are present then the entire prediction is false.\n\n"
   end
 
   def bypas_code
-    puts "\nBellow this line attempt to identify the masterminds peg code. In each attempt on a ten turns interval chose 4 pegs that you predict could be in the same order as that of the mastermids. Keep in mind the rules of the game.\n\n"
     bot_pick = @pegs.shuffle[1..4]
     input = ""
     interval = 0
 
     until input == bot_pick || interval == 3
-      puts "\nTurn #{interval + 1}"
+      puts "\nTurn #{interval + 1} : Enter prediction."
       input = gets.chomp.split(" ")
       count = 0
 
@@ -48,6 +47,8 @@ class Canvas
 
       if feedback == "O O O O "
         remark = "CODE BYPASED"
+      elsif feedback.size < 1
+        remark = "NO MATCH FOUND"
       else
         remark = "CODE BYPAS ERROR >> #{bot_pick}" if interval == 2
       end
@@ -55,6 +56,23 @@ class Canvas
       output = "#{feedback} #{remark}"
       puts output
       interval += 1
+    end
+  end
+
+  def replay
+    puts "\n================================\n\nWant to play again (YES/ NO)? "
+    play = gets.chomp.upcase
+
+    sleep 3
+
+    if play == "YES"
+      bypas_code
+      replay
+    elsif play == "NO"
+      puts "\nSee you soon..."
+    else
+      puts "\nINPUT INVALID"
+      replay
     end
   end
 end
