@@ -23,7 +23,7 @@ class Canvas
     input = ""
     interval = 0
 
-    until input == bot_pick || interval == 3
+    until input == bot_pick || interval == 10
       puts "\nTurn #{interval + 1} : Enter prediction."
       input = gets.chomp.split(" ")
       count = 0
@@ -50,7 +50,7 @@ class Canvas
       elsif feedback.size < 1
         remark = "NO MATCH FOUND"
       else
-        remark = "CODE BYPAS ERROR >> #{bot_pick}" if interval == 2
+        remark = "CODE BYPAS ERROR >> #{bot_pick}" if interval == 9
       end
 
       output = "#{feedback} #{remark}"
