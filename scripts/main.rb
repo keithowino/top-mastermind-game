@@ -12,7 +12,7 @@ class Canvas
     puts "    MASTERMIND V1   "
     puts "=====================\n\n"
     puts "For a detailed walkthrough on game play check out this link https://www.youtube.com/watch?v=wsYPsrzCKiA&ab_channel=wikiHow from wikiHow.\n\n"
-    puts "For this first version the mastermind will be the computer. Be advised that as it's still a work in progress dublicate predictions per pair is not allowed, attempting this might lead to missleading prediction in later trials.\n\n"
+    puts "For this first version the mastermind will be the computer. Be advised that as it's still a work in progress duplicate predictions per pair is not allowed, attempting this might lead to missleading prediction in later trials.\n\n"
     puts "The engine will chose on random 4 different colored pegs from this list bellow:\n\n"
     puts "#{@pegs.to_s}\n\n"
     puts "Your mission should chose is to cipher the code and identify this 4 identical pegs in the same order they were picked up by the engine. Prediction limit is set to 10 trials. After each prediction the O symbol(s) represent the number of pegs you correctly positioned, similarly the X symbol(s) represent the number of pegs that are present in the masterminds code but positioned wrongly in your current prediction. If none of the two symbols are present then the entire prediction is false.\n\n"
@@ -20,8 +20,11 @@ class Canvas
 
   def bypas_code
     bot_pick = @pegs.shuffle[1..4]
+    list = @pegs
     input = ""
     interval = 0
+
+    puts "\n#{list}"
 
     until input == bot_pick || interval == 10
       puts "\nTurn #{interval + 1} : Enter prediction."
