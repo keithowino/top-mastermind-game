@@ -51,7 +51,12 @@ class Canvas
       if feedback == "O O O O "
         remark = "CODE BYPASED"
       elsif feedback.size < 1
-        remark = "NO MATCH FOUND"
+        if interval == 9
+          remark = "NO MATCH FOUND CODE BYPAS ERROR >> #{bot_pick}"
+        else
+          remark = "NO MATCH FOUND"
+        end
+        # remark = "NO MATCH FOUND"
       else
         remark = "CODE BYPAS ERROR >> #{bot_pick}" if interval == 9
       end
@@ -73,6 +78,8 @@ class Canvas
       replay
     elsif play == "NO"
       puts "\nSee you soon..."
+      
+      sleep 5
     else
       puts "\nINPUT INVALID"
       replay
